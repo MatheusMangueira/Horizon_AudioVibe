@@ -1,78 +1,51 @@
-import { theme } from "../../styles/theme";
+import { Flex, Text } from "@chakra-ui/react";
+import { BottomAlbums } from "../Buttom/BottomAlbums";
+import { BottomArtist } from "../Buttom/BottomArtist";
+import { BottomHome } from "../Buttom/BottomHome";
 
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import { Headphones, Person } from "phosphor-react";
+type Props = {
+  album?: () => void;
+  artist?: () => void;
+  home?: () => void;
+};
 
-export const SideBar = () => {
+export const SideBar = ({ album, artist, home }: Props) => {
   return (
-    <div
-      style={{
-        margin: "0",
-        width: "250px",
-        height: "100%",
-        borderRadius: "0 20px 20px 0",
-        borderRight: `1px solid ${theme.palette.primary.main}`,
-      }}
+    <Flex
+      h="100%"
+      boxShadow="2px 3px 19px 4px rgba(255, 186, 8, 0.4)"
+      p="20px"
+      w="300px"
+      borderRadius="0 20px 0 0"
+      flexDirection="column"
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <h1>
+      <Flex justify="center" w="10%0">
+        <Text fontSize="3xl">
           Audio
-          <span
-            style={{
-              color: theme.palette.secondary.main,
-            }}
-          >
+          <Text as="span" color="yellow.500">
             V
-          </span>
+          </Text>
           ibe
-        </h1>
-      </div>
+        </Text>
+      </Flex>
 
-      <div>
-        <List
-          sx={{
-            width: "100%",
-            bgcolor: `${theme.palette.primary.dark}`,
-          }}
-          component="nav"
-          aria-labelledby="nested-list-subheader"
-        >
-          <ListItemButton href="#">
-            <ListItemIcon>
-              <Headphones
-                style={{
-                  color: "#7fffd4",
-                }}
-                size={24}
-                weight="fill"
-              />
-            </ListItemIcon>
-            <ListItemText primary="Musicas" />
-          </ListItemButton>
-
-          <ListItemButton href="#">
-            <ListItemIcon>
-              <Person
-                style={{
-                  color: "#d800ff",
-                }}
-                size={24}
-                weight="fill"
-              />
-            </ListItemIcon>
-            <ListItemText primary="Artistas" />
-          </ListItemButton>
-        </List>
-      </div>
-    </div>
+      <Flex
+        justify="space-between "
+        flexDirection="column"
+        h="100%"
+        align="center"
+      >
+        <Flex flexDirection="column" mt="20px" w="100%">
+          <BottomAlbums albumsClick={album} />
+          <BottomHome homeClick={home} />
+          <BottomArtist bottomArtist={artist} />
+        </Flex>
+        <Flex>
+          <Text fontSize="12px " color="gray.100">
+            © 2023 Matheus Mangueira
+          </Text>
+        </Flex>
+      </Flex>
+    </Flex>
   );
 };
