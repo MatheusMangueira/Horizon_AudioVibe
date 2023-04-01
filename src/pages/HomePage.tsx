@@ -1,7 +1,7 @@
-import { Albums, MenuMusic, SideBar } from "../components";
-import { Grid, Flex, Box } from "@chakra-ui/react";
-import { useEffect, useReducer, useState } from "react";
-import { SpotifyAlbumsService } from "../services/api/spotifyAlbumsService";
+import { Box, Flex } from "@chakra-ui/react";
+import { useReducer, useState } from "react";
+import { Albums, Artist, SideBar } from "../components";
+import { HomeMusic } from "../components/Home";
 import { spotifySearchService } from "../services/api/spotifySearchService";
 
 const activeState = (sectionActive: string, state: any) => {
@@ -14,11 +14,13 @@ const activeState = (sectionActive: string, state: any) => {
 
 type Action =
   | { type: "artist"; payload?: any }
-  | { type: "album"; payload?: any };
+  | { type: "album"; payload?: any }
+  | { type: "home"; payload?: any };
 
 type initialState = {
   artist: boolean;
   album: boolean;
+  home: boolean;
 };
 
 const reducer = (state: initialState, action: Action) => {
@@ -27,68 +29,74 @@ const reducer = (state: initialState, action: Action) => {
       return activeState("artist", state);
     case "album":
       return activeState("album", state);
+    case "home":
+      return activeState("home", state);
     default:
       return "Artist";
   }
 };
 
 export const HomePage = () => {
-  const [categories, setCategories] = useState<any>([]);
   const [filterAlbums, setFilterAlbums] = useState<any>([]);
+  const [filterArtist, setFilterArtist] = useState<any>([]);
 
   const [state, dispatch] = useReducer(reducer, {
-    artist: true,
+    artist: false,
     album: false,
+    home: true,
   });
-
-  const handleAlbums = async () => {
-    const idAlbums =
-      "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc";
-    const market = "ES";
-    dispatch({ type: "album" });
-
-    try {
-      const response = await SpotifyAlbumsService.getAlbums(idAlbums, market);
-      setCategories(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleSearchAlbums = async (search: string) => {
     try {
-      const response = await spotifySearchService.getSearch(search);
+      const response = await spotifySearchService.getSearch(
+        search,
+        "album",
+        10
+      );
       setFilterAlbums(response.data.albums.items);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    handleAlbums();
-  }, []);
+  const handleSearchArtist = async (search: string) => {
+    try {
+      const response = await spotifySearchService.getSearch(search, "artist");
+      setFilterArtist(response.data.artists.items);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleArtist = () => {
+    dispatch({ type: "artist" });
+  };
+
+  const handleHome = () => {
+    dispatch({ type: "home" });
+  };
+
+  const handleAlbums = () => {
+    dispatch({ type: "album" });
+  };
 
   return (
-    <Box>
-      <Grid
-        templateColumns={{ base: "1fr", sm: "1fr 100%" }}
-        w="100%"
-        height="100vh"
-      >
-        <Flex flexDirection="column" w="100%">
-          <SideBar album={handleAlbums} artist={() => {}} home={() => {}} />
-        </Flex>
-        <Grid w="100%" templateRows="1fr auto">
-          {state.album && (
-            <Albums
-              searchData={handleSearchAlbums}
-              allAlbums={categories}
-              albums={filterAlbums}
-            />
-          )}
-          <MenuMusic />
-        </Grid>
-      </Grid>
-    </Box>
+    <Flex w="100%" h="100vh " flexDirection={{ base: "column" }}>
+      <Box>
+        <SideBar artist={handleArtist} album={handleAlbums} home={handleHome} />
+      </Box>
+
+      <Box h="100%" w="100%">
+        {state.artist && (
+          <Artist data={filterArtist} searchData={handleSearchArtist} />
+        )}
+        {state.album && (
+          <Albums searchData={handleSearchAlbums} allAlbums={filterAlbums} />
+        )}
+        {state.home && (
+          <HomeMusic homeToArtist={handleArtist} homeToAlbums={handleAlbums} />
+        )}
+      </Box>
+    </Flex>
   );
 };

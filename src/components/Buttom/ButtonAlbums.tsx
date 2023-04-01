@@ -1,14 +1,15 @@
-import { Box, Flex, Link, Text } from "@chakra-ui/react";
-import { House, MusicNote } from "phosphor-react";
+import { Box, Text } from "@chakra-ui/react";
+import { MusicNote } from "phosphor-react";
 
 type Props = {
-  homeClick?: () => void;
+  albumsClick?: () => void;
 };
 
-export const BottomHome = ({ homeClick }: Props) => {
+export const ButtonAlbums = ({ albumsClick }: Props) => {
   const handleClick = () => {
-    homeClick && homeClick();
+    albumsClick && albumsClick();
   };
+
   return (
     <Box w="100%">
       <button
@@ -25,15 +26,15 @@ export const BottomHome = ({ homeClick }: Props) => {
           mb="5px"
         >
           <Text mr="10px">
-            <House
+            <MusicNote
               size={24}
               weight="fill"
               style={{
-                color: "#00edf9",
+                color: "#e802f8",
               }}
             />
           </Text>
-          <Text>Home</Text>
+          <Text>Albums</Text>
         </Box>
       </button>
     </Box>

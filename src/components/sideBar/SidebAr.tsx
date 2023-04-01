@@ -1,7 +1,8 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { BottomAlbums } from "../Buttom/BottomAlbums";
-import { BottomArtist } from "../Buttom/BottomArtist";
-import { BottomHome } from "../Buttom/BottomHome";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { ButtonHome } from "../Buttom/ButtonHome";
+import { ButtonAlbums } from "../Buttom/ButtonAlbums";
+import { ButtonArtist } from "../Buttom/ButtonArtist";
 
 type Props = {
   album?: () => void;
@@ -10,42 +11,87 @@ type Props = {
 };
 
 export const SideBar = ({ album, artist, home }: Props) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleMobile = () => {
+    setIsMobile(!isMobile);
+  };
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth > 980 && false);
+    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <Flex
-      h="100%"
-      boxShadow="2px 3px 19px 4px rgba(255, 186, 8, 0.4)"
-      p="20px"
-      w="300px"
-      borderRadius="0 20px 0 0"
-      flexDirection="column"
-    >
-      <Flex justify="center" w="10%0">
-        <Text fontSize="3xl">
-          Audio
-          <Text as="span" color="yellow.500">
-            V
-          </Text>
-          ibe
-        </Text>
-      </Flex>
+    <>
+      {isMobile && (
+        <Flex
+          position="absolute"
+          bg="gray.900"
+          w="300px"
+          flexDirection="column"
+          h="100%"
+          p="20px"
+          top="70px"
+          left="0"
+          borderColor="yellow.900"
+          borderRadius="8px"
+          zIndex="9999"
+          boxShadow="5px 7px 16px rgba(255, 186, 8, 0.4);"
+        >
+          <ButtonHome homeClick={home} />
+          <ButtonAlbums albumsClick={album} />
+          <ButtonArtist bottomArtist={artist} />
+        </Flex>
+      )}
 
       <Flex
-        justify="space-between "
-        flexDirection="column"
-        h="100%"
-        align="center"
+        w="100%"
+        h="70px"
+        boxShadow="5px 7px 16px rgba(255, 186, 8, 0.4);"
+        alignItems="center"
+        justify={{ base: "start", lg: "space-around" }}
       >
-        <Flex flexDirection="column" mt="20px" w="100%">
-          <BottomAlbums albumsClick={album} />
-          <BottomHome homeClick={home} />
-          <BottomArtist bottomArtist={artist} />
-        </Flex>
-        <Flex>
-          <Text fontSize="12px " color="gray.100">
-            © 2023 Matheus Mangueira
+        <Button
+          onClick={handleMobile}
+          display={{ base: "block", lg: "none" }}
+          bg="none"
+          p="0"
+          w="100px"
+          textAlign="center"
+          border="1px"
+          borderColor="yellow.900"
+          borderRadius="8px"
+          _hover={{ bg: "yellow.900", color: "gray.900" }}
+          color="yellow.900"
+          ml="20px"
+        >
+          <Text fontSize="16px">Menu</Text>
+        </Button>
+
+        <Box ml="20px" w="100%" display={{ base: "none", lg: "block" }}>
+          <Text fontSize="3xl">
+            Audio
+            <Text as="span" color="yellow.900">
+              V
+            </Text>
+            ibe
           </Text>
+        </Box>
+        <Flex display={{ base: "none", lg: "flex" }} mr="20px" w="100%">
+          <ButtonHome homeClick={home} />
+          <ButtonAlbums albumsClick={album} />
+          <ButtonArtist bottomArtist={artist} />
         </Flex>
       </Flex>
-    </Flex>
+    </>
   );
 };
+
+// © 2023 Matheus Mangueira

@@ -1,17 +1,27 @@
-import { Box, Button, Flex, Input, Spinner, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Controller, useForm } from "react-hook-form";
 import { CardsAlbums } from "./components/CardsAlbuns/CardsAlbuns";
-import { useState } from "react";
 
 type Props = {
-  albums: any;
   searchData?: (data: any) => void;
   allAlbums?: any;
 };
 
-export const Albums = ({ albums, searchData, allAlbums }: Props) => {
-  console.log("dataSearchfilter", allAlbums);
-
+export const Albums = ({ searchData, allAlbums }: Props) => {
   const {
     control,
     handleSubmit,
@@ -23,22 +33,27 @@ export const Albums = ({ albums, searchData, allAlbums }: Props) => {
     },
   });
 
-  const [isSearch, setIsSearch] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSubmitAlbums = (data: any) => {
     if (searchData) {
-      setIsSearch(true);
       searchData(data.search);
     }
   };
 
   return (
-    <Box p="40px" w="100%">
-      <Flex w="100%" justify="start" p={{ base: "10px", md: "20px" }}>
-        <Text fontSize={{ base: "20px", md: "24px" }}>Albums</Text>
+    <Box h="100%" p={{ base: "0", lg: "40px" }} w="100%">
+      <Flex w="100%" justify="start">
+        <Text ml="20px" mt="20px" fontSize={{ lg: "30px", base: "18px" }}>
+          Albums
+        </Text>
       </Flex>
-
-      <Flex w="400px" mb="40px" m="10px" align="center">
+      <Flex
+        w={{ base: "300px", lg: "400px" }}
+        mb="40px"
+        m="10px"
+        align="center"
+      >
         <Controller
           name="search"
           control={control}
@@ -51,7 +66,7 @@ export const Albums = ({ albums, searchData, allAlbums }: Props) => {
               borderColor="yellow.900"
               size="md"
               color="white"
-              placeholder="Buscar Album"
+              placeholder="Search Album"
             />
           )}
         />
@@ -72,47 +87,50 @@ export const Albums = ({ albums, searchData, allAlbums }: Props) => {
           p="10px"
           borderRadius="5px"
         >
-          <Text fontSize="14px">Buscar</Text>
+          <Text fontSize="14px">Search</Text>
         </Button>
       </Flex>
 
-      {!albums ? (
-        <Flex w="100$" justify="center" align="center" h="100%">
-          <Spinner size="lg" color="yellow.900" />
-        </Flex>
-      ) : (
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-          }}
-        >
-          {isSearch
-            ? albums.map((items: any) => {
-                console.log(items, "item");
-                return (
-                  <CardsAlbums
-                    bgImage={items.images.map(
-                      (item: { url: string }) => item.url
-                    )}
-                    name={items.name}
-                  />
-                );
-              })
-            : allAlbums.albums &&
-              allAlbums.albums.map((items: any) => {
-                console.log(items, "item");
-                return (
-                  <CardsAlbums
-                    bgImage={items.images.map(
-                      (item: { url: string }) => item.url
-                    )}
-                    name={items.name}
-                  />
-                );
-              })}
-        </div>
-      )}
+      <Modal onClose={onClose} isOpen={isOpen} isCentered>
+        <ModalOverlay />
+        <ModalContent bg="gray.900">
+          <ModalHeader color="yellow.900">Details</ModalHeader>
+          <ModalCloseButton bg="yellow.900" />
+          <ModalBody>
+            <Text>Nome: </Text>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              _hover={{ bg: "gray.900", color: "yellow.900" }}
+              bg="yellow.900"
+              onClick={onClose}
+            >
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
+        {allAlbums &&
+          allAlbums.map((items: any) => {
+            return (
+              <CardsAlbums
+                albumModal={onOpen}
+                bgImage={items.images.map((item: { url: string }) => item.url)}
+                name={items.name}
+                release_date={items.release_date}
+                total_tracks={items.total_tracks}
+                url_spotify={items.uri}
+              />
+            );
+          })}
+      </div>
     </Box>
   );
 };

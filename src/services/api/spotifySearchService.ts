@@ -5,18 +5,19 @@ export class spotifySearchService {
   static async getSearch(
     q?: string,
     type?: string,
-    market?: string,
     limit?: number,
+    market?: string,
     offset?: number,
     include_external?: string
   ) {
     const data = await api.get(endpoints.search, {
       params: {
         q: q,
-        type: "album",
+        type: type,
+        limit: limit,
         market: "ES",
-        limit: 10,
         offset: 0,
+        include_external: "audio",
       },
     });
     return data;

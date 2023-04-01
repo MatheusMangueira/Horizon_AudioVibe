@@ -1,11 +1,11 @@
-import { Box, Flex, Link, Text } from "@chakra-ui/react";
-import { House, MusicNote, User } from "phosphor-react";
+import { Box, Text } from "@chakra-ui/react";
+import { User } from "phosphor-react";
 
 type Props = {
   bottomArtist?: () => void;
 };
 
-export const BottomArtist = ({ bottomArtist }: Props) => {
+export const ButtonArtist = ({ bottomArtist }: Props) => {
   const handleClick = () => {
     bottomArtist && bottomArtist();
   };
@@ -33,7 +33,7 @@ export const BottomArtist = ({ bottomArtist }: Props) => {
               }}
             />
           </Text>
-          <Text>Artist</Text>
+          <Text>Artists</Text>
         </Box>
       </button>
     </Box>

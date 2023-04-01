@@ -32,14 +32,11 @@ api.interceptors.response.use(
 
         api.defaults.headers.Authorization = "Bearer " + newToken;
 
-        // Tenta a requisição novamente com as novas configurações
         const config = error.config;
         config.headers.Authorization = "Bearer " + newToken;
 
         return api(config);
       } catch (error) {
-        // Trata o erro de obtenção de token
-        console.error("Erro ao obter token do Spotify:", error);
         return Promise.reject(error);
       }
     }
