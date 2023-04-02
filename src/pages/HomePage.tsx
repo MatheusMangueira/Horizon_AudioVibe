@@ -1,6 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { useReducer, useState } from 'react';
-import { Albums, Artist, HomeMusic, SideBar } from '../components';
+import { Albums, Artist, HomeMusic, Menu } from '../components';
 
 import { spotifySearchService } from '../services/api/spotifySearchService';
 
@@ -83,7 +83,7 @@ export const HomePage = () => {
   return (
     <Flex w="100%" h="100vh " flexDirection={{ base: 'column' }}>
       <Box>
-        <SideBar artist={handleArtist} album={handleAlbums} home={handleHome} />
+        <Menu artist={handleArtist} album={handleAlbums} home={handleHome} />
       </Box>
 
       <Box h="100%" w="100%">

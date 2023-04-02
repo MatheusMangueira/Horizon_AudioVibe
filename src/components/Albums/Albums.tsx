@@ -16,6 +16,7 @@ import {
 import { Controller, useForm } from 'react-hook-form';
 import { CardsAlbums } from './components/CardsAlbums/CardsAlbums';
 
+
 type Props = {
   searchData?: (data: any) => void;
   allAlbums?: any;

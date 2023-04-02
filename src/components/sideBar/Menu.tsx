@@ -10,7 +10,7 @@ type Props = {
   home?: () => void;
 };
 
-export const SideBar = ({ album, artist, home }: Props) => {
+export const Menu = ({ album, artist, home }: Props) => {
   const [isMobile, setIsMobile] = useState(false);
 
   const handleMobile = () => {
