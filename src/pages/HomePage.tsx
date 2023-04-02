@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { useReducer, useState } from "react";
-import { Albums, Artist, SideBar } from "../components";
-import { HomeMusic } from "../components/Home";
+import { Albums, Artist, SideBar, HomeMusic } from "../components";
+
 import { spotifySearchService } from "../services/api/spotifySearchService";
 
 const activeState = (sectionActive: string, state: any) => {

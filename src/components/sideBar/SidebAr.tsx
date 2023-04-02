@@ -1,8 +1,8 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { ButtonHome } from "../Buttom/ButtonHome";
-import { ButtonAlbums } from "../Buttom/ButtonAlbums";
-import { ButtonArtist } from "../Buttom/ButtonArtist";
+import { ButtonHome } from "../Button/ButtonHome";
+import { ButtonAlbums } from "../Button/ButtonAlbums";
+import { ButtonArtist } from "../Button/ButtonArtist";
 
 type Props = {
   album?: () => void;
@@ -93,5 +93,3 @@ export const SideBar = ({ album, artist, home }: Props) => {
     </>
   );
 };
-
-// © 2023 Matheus Mangueira
