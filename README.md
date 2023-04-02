@@ -1,46 +1,75 @@
-# Getting Started with Create React App
+<h1> AudioVibe</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+<p>O AudioVibe é uma aplicação que consome a API do Spotify para buscar informações sobre artistas e álbuns. A aplicação é dividida em três abas principais:</p>
 
-### `yarn start`
+## Início
+![inicio](https://user-images.githubusercontent.com/98111351/229324211-db23cd63-12f8-4beb-acdb-263eb3fa4311.png)
+<p> A aba Início foi desenvolvida para navegação</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Artistas
+![artistas](https://user-images.githubusercontent.com/98111351/229324207-0cec6a29-b46e-420e-9248-81f06df616d3.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p> A aba de Artistas permite buscar artistas no Spotify e exibir o nome e foto.</p>
 
-### `yarn test`
+## Álbuns
+![albuns](https://user-images.githubusercontent.com/98111351/229324224-0c17634e-31e3-4a99-839d-b6ae3aeb8f7d.png)
+<p>A aba de Álbuns permite buscar álbuns no Spotify e exibir informações sobre eles, como nome, data de lançamento, foto da capa e número de faixas.</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## API do Spotify
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p>O AudioVibe consome a API do Spotify para buscar informações sobre artistas e álbuns. Para usar a API, é necessário criar uma conta no Spotify for Developers e criar um aplicativo para obter as credenciais de acesso. </p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tecnologias Utilizadas
+<p>O AudioVibe foi desenvolvido utilizando as seguintes tecnologias: </p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<ul>
+      <li><strong>React:</strong> uma biblioteca JavaScript para criação de interfaces de usuário.</li>
+      <li><strong>TypeScript:</strong> um superconjunto do JavaScript que adiciona tipagem estática e outros recursos à linguagem.</li>
+      <li><strong>Axios:</strong> um cliente HTTP baseado em Promises para o navegador e Node.js.</li>
+       <li><strong>Chakra UI:</strong>  uma biblioteca de componentes de interface de usuário para React que permite criar interfaces bonitas e responsivas de forma rápida e fácil..</li>
+      <li><strong>Reducer:</strong> uma função pura do Redux que é usada para atualizar o estado global da aplicação com base nas ações enviadas pela aplicação.</li>
+       <li><strong>dotenv:</strong> uma biblioteca que permite carregar variáveis de ambiente de um arquivo .env na raiz do projeto.</li>   
+ </ul>
+ 
+ <p>Essas tecnologias trabalham juntas para fornecer uma arquitetura escalável e uma experiência de usuário agradável e responsiva para os usuários do AudioVibe. </p>
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Como usar 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<p> Para usar o AudioVibe, basta seguir os passos abaixo:</p>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Clone o repositório: 
+```
+git clone https://github.com/MatheusMangueira/Horizon_AudioVibe.git
+```
+2. instale as dependências: 
+```
+yarn install
+```
+3. O projeto utiliza algumas variáveis de ambiente para se conectar à API do Spotify e ao servidor de autenticação. Para configurá-las, crie um arquivo .env na raiz do projeto com as seguintes informações: 
+```
+REACT_APP_API_BASEURL=https://api.spotify.com/v1/
+REACT_APP_API_ENDPOINT=https://accounts.spotify.com/
+REACT_APP_TOKEN_KEY=myTokenSpotify
+REACT_APP_CLIENTID=<seu_client_id>
+REACT_APP_CLIENTSECRET=<seu_client_secret>
+```
 
-## Learn More
+<p>A variável REACT_APP_API_BASEURL define a URL base da API do Spotify, enquanto a variável REACT_APP_API_ENDPOINT define a URL do servidor de autenticação. A variável REACT_APP_TOKEN_KEY define a chave para acessar o token de autenticação no LocalStorage do navegador. Além disso, as variáveis de ambiente REACT_APP_CLIENTID e REACT_APP_CLIENTSECRET são utilizadas para armazenar as credenciais do aplicativo registrado no painel de desenvolvedor do Spotify. Essas credenciais são necessárias para que a aplicação possa se autenticar na API do Spotify e obter as informações dos artistas e álbuns. </p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Inicie o servidor de desenvolvimento:
+```
+yarn start
+```
+
+
+## Conclusão </p>
+<p>
+O AudioVibe é um projeto desenvolvido em React com TypeScript que consome a API do Spotify para buscar informações sobre artistas e álbuns. A aplicação utiliza Reducer para gerenciamento de estado e Axios para realizar as requisições HTTP. Com uma interface intuitiva e fácil de usar, o AudioVibe é uma ótima opção para quem deseja explorar o catálogo de músicas do Spotify de forma mais dinâmica e interativa.
+</p>
+
