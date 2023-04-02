@@ -1,10 +1,10 @@
-import { Box, Button, Flex, Input, Spinner, Text } from "@chakra-ui/react";
-import { Controller, useForm } from "react-hook-form";
+import { Box, Button, Flex, Input, Text } from '@chakra-ui/react';
+import { Controller, useForm } from 'react-hook-form';
 
-import Tippy from "@tippyjs/react";
-import "react-tippy/dist/tippy.css";
-import "tippy.js/dist/tippy.css";
-import "tippy.js/themes/light.css";
+import Tippy from '@tippyjs/react';
+import 'react-tippy/dist/tippy.css';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/themes/light.css';
 
 type Props = {
   data?: any;
@@ -13,10 +13,10 @@ type Props = {
 
 export const Artist = ({ data, searchData }: Props) => {
   const { control, handleSubmit } = useForm({
-    mode: "onSubmit",
+    mode: 'onSubmit',
     defaultValues: {
-      search: "",
-    },
+      search: ''
+    }
   });
 
   const handleSubmitArtist = (dataArtist: any) => {
@@ -26,14 +26,14 @@ export const Artist = ({ data, searchData }: Props) => {
   };
 
   return (
-    <Box h="100%" p={{ base: "0", lg: "40px" }} w="100%">
+    <Box h="100%" p={{ base: '0', lg: '40px' }} w="100%">
       <Flex w="100%" justify="start">
-        <Text ml="20px" mt="20px" fontSize={{ lg: "30px", base: "18px" }}>
+        <Text ml="20px" mt="20px" fontSize={{ lg: '30px', base: '18px' }}>
           Artists
         </Text>
       </Flex>
       <Flex
-        w={{ base: "300px", lg: "400px" }}
+        w={{ base: '300px', lg: '400px' }}
         mb="40px"
         m="10px"
         align="center"
@@ -58,8 +58,8 @@ export const Artist = ({ data, searchData }: Props) => {
         <Button
           onClick={handleSubmit(handleSubmitArtist)}
           _hover={{
-            bg: "gray.900",
-            color: "yellow.900",
+            bg: 'gray.900',
+            color: 'yellow.900'
           }}
           m="10px"
           w="100px"

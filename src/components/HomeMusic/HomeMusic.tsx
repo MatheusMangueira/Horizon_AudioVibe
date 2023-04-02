@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
 
 type Props = {
   homeToAlbums?: () => void;
@@ -27,7 +27,7 @@ export const HomeMusic = ({ homeToAlbums, homeToArtist }: Props) => {
       >
         <Flex justify="center" w="100%">
           <Box>
-            <Text color="yellow.900" fontSize={{ base: "54px", lg: "7xl" }}>
+            <Text color="yellow.900" fontSize={{ base: '54px', lg: '7xl' }}>
               Audio
               <Text as="span" color="gray.900">
                 V
@@ -40,7 +40,7 @@ export const HomeMusic = ({ homeToAlbums, homeToArtist }: Props) => {
               background="linear-gradient(90deg,  #ff8c00, #ffff00)"
               w="100%"
               color="gray.900"
-              fontSize={{ base: "32px", lg: "7xl" }}
+              fontSize={{ base: '32px', lg: '7xl' }}
             >
               Feel the vibe
             </Text>
@@ -50,11 +50,11 @@ export const HomeMusic = ({ homeToAlbums, homeToArtist }: Props) => {
                 mt="30px"
                 borderRadius="50%"
                 bg="none"
-                h={{ base: "75px", lg: "90px" }}
-                fontSize={{ base: "12px", lg: "18px" }}
+                h={{ base: '75px', lg: '90px' }}
+                fontSize={{ base: '12px', lg: '18px' }}
                 color="yellow.900"
                 border="1px solid #ffba08"
-                _hover={{ bg: "#ffba08", color: "#181b23" }}
+                _hover={{ bg: '#ffba08', color: '#181b23' }}
               >
                 Albums
               </Button>
@@ -65,10 +65,10 @@ export const HomeMusic = ({ homeToAlbums, homeToArtist }: Props) => {
                 borderRadius="50%"
                 bg="none"
                 color="yellow.900"
-                h={{ base: "75px", lg: "90px" }}
-                fontSize={{ base: "12px", lg: "18px" }}
+                h={{ base: '75px', lg: '90px' }}
+                fontSize={{ base: '12px', lg: '18px' }}
                 border="1px solid #ffba08"
-                _hover={{ bg: "#ffba08", color: "#181b23" }}
+                _hover={{ bg: '#ffba08', color: '#181b23' }}
               >
                 Artists
               </Button>

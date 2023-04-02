@@ -1,5 +1,5 @@
-import { Box, Text } from "@chakra-ui/react";
-import { MusicNote } from "phosphor-react";
+import { Box, Text } from '@chakra-ui/react';
+import { MusicNote } from 'phosphor-react';
 
 type Props = {
   albumsClick?: () => void;
@@ -15,12 +15,12 @@ export const ButtonAlbums = ({ albumsClick }: Props) => {
       <button
         onClick={handleClick}
         style={{
-          width: "100%",
+          width: '100%'
         }}
       >
         <Box
           display="flex"
-          _hover={{ bg: "gray.800" }}
+          _hover={{ bg: 'gray.800' }}
           p="10px"
           cursor="pointer"
           mb="5px"
@@ -30,7 +30,7 @@ export const ButtonAlbums = ({ albumsClick }: Props) => {
               size={24}
               weight="fill"
               style={{
-                color: "#e802f8",
+                color: '#e802f8'
               }}
             />
           </Text>

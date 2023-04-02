@@ -1,5 +1,5 @@
-import { endpoints } from "../endpoints";
-import { api } from "./Api";
+import { endpoints } from '../endpoints';
+import { api } from './Api';
 
 export class spotifySearchService {
   static async getSearch(
@@ -15,10 +15,10 @@ export class spotifySearchService {
         q: q,
         type: type,
         limit: limit,
-        market: "ES",
+        market: 'ES',
         offset: 0,
-        include_external: "audio",
-      },
+        include_external: 'audio'
+      }
     });
     return data;
   }

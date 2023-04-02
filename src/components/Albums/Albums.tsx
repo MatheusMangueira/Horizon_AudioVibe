@@ -11,10 +11,10 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { Controller, useForm } from "react-hook-form";
-import { CardsAlbums } from "./components/CardsAlbuns/CardsAlbuns";
+  useDisclosure
+} from '@chakra-ui/react';
+import { Controller, useForm } from 'react-hook-form';
+import { CardsAlbums } from './components/CardsAlbums/CardsAlbums';
 
 type Props = {
   searchData?: (data: any) => void;
@@ -25,12 +25,12 @@ export const Albums = ({ searchData, allAlbums }: Props) => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm({
-    mode: "onSubmit",
+    mode: 'onSubmit',
     defaultValues: {
-      search: "",
-    },
+      search: ''
+    }
   });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -42,14 +42,14 @@ export const Albums = ({ searchData, allAlbums }: Props) => {
   };
 
   return (
-    <Box h="100%" p={{ base: "0", lg: "40px" }} w="100%">
+    <Box h="100%" p={{ base: '0', lg: '40px' }} w="100%">
       <Flex w="100%" justify="start">
-        <Text ml="20px" mt="20px" fontSize={{ lg: "30px", base: "18px" }}>
+        <Text ml="20px" mt="20px" fontSize={{ lg: '30px', base: '18px' }}>
           Albums
         </Text>
       </Flex>
       <Flex
-        w={{ base: "300px", lg: "400px" }}
+        w={{ base: '300px', lg: '400px' }}
         mb="40px"
         m="10px"
         align="center"
@@ -74,8 +74,8 @@ export const Albums = ({ searchData, allAlbums }: Props) => {
         <Button
           onClick={handleSubmit(handleSubmitAlbums)}
           _hover={{
-            bg: "gray.900",
-            color: "yellow.900",
+            bg: 'gray.900',
+            color: 'yellow.900'
           }}
           m="10px"
           w="100px"
@@ -101,7 +101,7 @@ export const Albums = ({ searchData, allAlbums }: Props) => {
           </ModalBody>
           <ModalFooter>
             <Button
-              _hover={{ bg: "gray.900", color: "yellow.900" }}
+              _hover={{ bg: 'gray.900', color: 'yellow.900' }}
               bg="yellow.900"
               onClick={onClose}
             >
@@ -113,8 +113,8 @@ export const Albums = ({ searchData, allAlbums }: Props) => {
 
       <div
         style={{
-          display: "flex",
-          flexWrap: "wrap",
+          display: 'flex',
+          flexWrap: 'wrap'
         }}
       >
         {allAlbums &&

@@ -1,4 +1,4 @@
-import { Box, Text, Flex, Button } from "@chakra-ui/react";
+import { Box, Text, Flex, Button } from '@chakra-ui/react';
 
 type Props = {
   bgImage?: string;
@@ -15,7 +15,7 @@ export const CardsAlbums = ({
   url_spotify,
   bgImage,
   name,
-  albumModal,
+  albumModal
 }: Props) => {
   return (
     <Flex
@@ -38,41 +38,41 @@ export const CardsAlbums = ({
         <Text mt="5px" fontSize="14px" color="yellow.900">
           <span
             style={{
-              color: "white",
+              color: 'white'
             }}
           >
-            Name:{" "}
+            Name:{' '}
           </span>
           {name}
         </Text>
         <Text mt="5px" fontSize="14px" color="yellow.900">
           <span
             style={{
-              color: "white",
+              color: 'white'
             }}
           >
             Release data:
-          </span>{" "}
+          </span>{' '}
           {release_date}
         </Text>
         <Text mt="5px" fontSize="14px" color="yellow.900">
           <span
             style={{
-              color: "white",
+              color: 'white'
             }}
           >
             Total tracks:
-          </span>{" "}
+          </span>{' '}
           {total_tracks}
         </Text>
         <a
           target="_blank"
           href={url_spotify}
           style={{
-            color: "#6f6fe8",
-            textDecoration: "underline ",
-            marginTop: "5px",
-            fontSize: "14px",
+            color: '#6f6fe8',
+            textDecoration: 'underline ',
+            marginTop: '5px',
+            fontSize: '14px'
           }}
           rel="noreferrer"
         >

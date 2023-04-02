@@ -1,5 +1,5 @@
-import { Box, Text } from "@chakra-ui/react";
-import { House } from "phosphor-react";
+import { Box, Text } from '@chakra-ui/react';
+import { House } from 'phosphor-react';
 
 type Props = {
   homeClick?: () => void;
@@ -14,12 +14,12 @@ export const ButtonHome = ({ homeClick }: Props) => {
       <button
         onClick={handleClick}
         style={{
-          width: "100%",
+          width: '100%'
         }}
       >
         <Box
           display="flex"
-          _hover={{ bg: "gray.800" }}
+          _hover={{ bg: 'gray.800' }}
           p="10px"
           cursor="pointer"
           mb="5px"
@@ -29,7 +29,7 @@ export const ButtonHome = ({ homeClick }: Props) => {
               size={24}
               weight="fill"
               style={{
-                color: "#00edf9",
+                color: '#00edf9'
               }}
             />
           </Text>

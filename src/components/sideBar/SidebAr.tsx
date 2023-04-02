@@ -1,8 +1,8 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { ButtonHome } from "../Button/ButtonHome";
-import { ButtonAlbums } from "../Button/ButtonAlbums";
-import { ButtonArtist } from "../Button/ButtonArtist";
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { ButtonHome } from '../Button/ButtonHome';
+import { ButtonAlbums } from '../Button/ButtonAlbums';
+import { ButtonArtist } from '../Button/ButtonArtist';
 
 type Props = {
   album?: () => void;
@@ -23,9 +23,9 @@ export const SideBar = ({ album, artist, home }: Props) => {
     }
 
     handleResize();
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -56,11 +56,11 @@ export const SideBar = ({ album, artist, home }: Props) => {
         h="70px"
         boxShadow="5px 7px 16px rgba(255, 186, 8, 0.4);"
         alignItems="center"
-        justify={{ base: "start", lg: "space-around" }}
+        justify={{ base: 'start', lg: 'space-around' }}
       >
         <Button
           onClick={handleMobile}
-          display={{ base: "block", lg: "none" }}
+          display={{ base: 'block', lg: 'none' }}
           bg="none"
           p="0"
           w="100px"
@@ -68,14 +68,14 @@ export const SideBar = ({ album, artist, home }: Props) => {
           border="1px"
           borderColor="yellow.900"
           borderRadius="8px"
-          _hover={{ bg: "yellow.900", color: "gray.900" }}
+          _hover={{ bg: 'yellow.900', color: 'gray.900' }}
           color="yellow.900"
           ml="20px"
         >
           <Text fontSize="16px">Menu</Text>
         </Button>
 
-        <Box ml="20px" w="100%" display={{ base: "none", lg: "block" }}>
+        <Box ml="20px" w="100%" display={{ base: 'none', lg: 'block' }}>
           <Text fontSize="3xl">
             Audio
             <Text as="span" color="yellow.900">
@@ -84,7 +84,7 @@ export const SideBar = ({ album, artist, home }: Props) => {
             ibe
           </Text>
         </Box>
-        <Flex display={{ base: "none", lg: "flex" }} mr="20px" w="100%">
+        <Flex display={{ base: 'none', lg: 'flex' }} mr="20px" w="100%">
           <ButtonHome homeClick={home} />
           <ButtonAlbums albumsClick={album} />
           <ButtonArtist bottomArtist={artist} />

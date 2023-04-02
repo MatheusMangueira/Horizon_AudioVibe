@@ -1,8 +1,8 @@
-import { Box, Flex } from "@chakra-ui/react";
-import { useReducer, useState } from "react";
-import { Albums, Artist, SideBar, HomeMusic } from "../components";
+import { Box, Flex } from '@chakra-ui/react';
+import { useReducer, useState } from 'react';
+import { Albums, Artist, HomeMusic, SideBar } from '../components';
 
-import { spotifySearchService } from "../services/api/spotifySearchService";
+import { spotifySearchService } from '../services/api/spotifySearchService';
 
 const activeState = (sectionActive: string, state: any) => {
   const newSection: any = {};
@@ -13,9 +13,9 @@ const activeState = (sectionActive: string, state: any) => {
 };
 
 type Action =
-  | { type: "artist"; payload?: any }
-  | { type: "album"; payload?: any }
-  | { type: "home"; payload?: any };
+  | { type: 'artist'; payload?: any }
+  | { type: 'album'; payload?: any }
+  | { type: 'home'; payload?: any };
 
 type initialState = {
   artist: boolean;
@@ -25,14 +25,14 @@ type initialState = {
 
 const reducer = (state: initialState, action: Action) => {
   switch (action.type) {
-    case "artist":
-      return activeState("artist", state);
-    case "album":
-      return activeState("album", state);
-    case "home":
-      return activeState("home", state);
+    case 'artist':
+      return activeState('artist', state);
+    case 'album':
+      return activeState('album', state);
+    case 'home':
+      return activeState('home', state);
     default:
-      return "Artist";
+      return 'Artist';
   }
 };
 
@@ -43,14 +43,14 @@ export const HomePage = () => {
   const [state, dispatch] = useReducer(reducer, {
     artist: false,
     album: false,
-    home: true,
+    home: true
   });
 
   const handleSearchAlbums = async (search: string) => {
     try {
       const response = await spotifySearchService.getSearch(
         search,
-        "album",
+        'album',
         10
       );
       setFilterAlbums(response.data.albums.items);
@@ -61,7 +61,7 @@ export const HomePage = () => {
 
   const handleSearchArtist = async (search: string) => {
     try {
-      const response = await spotifySearchService.getSearch(search, "artist");
+      const response = await spotifySearchService.getSearch(search, 'artist');
       setFilterArtist(response.data.artists.items);
     } catch (error) {
       console.log(error);
@@ -69,19 +69,19 @@ export const HomePage = () => {
   };
 
   const handleArtist = () => {
-    dispatch({ type: "artist" });
+    dispatch({ type: 'artist' });
   };
 
   const handleHome = () => {
-    dispatch({ type: "home" });
+    dispatch({ type: 'home' });
   };
 
   const handleAlbums = () => {
-    dispatch({ type: "album" });
+    dispatch({ type: 'album' });
   };
 
   return (
-    <Flex w="100%" h="100vh " flexDirection={{ base: "column" }}>
+    <Flex w="100%" h="100vh " flexDirection={{ base: 'column' }}>
       <Box>
         <SideBar artist={handleArtist} album={handleAlbums} home={handleHome} />
       </Box>
