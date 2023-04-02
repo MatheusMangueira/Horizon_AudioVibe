@@ -2,7 +2,21 @@
 
 
 
-<p>O AudioVibe é uma aplicação que consome a API do Spotify para buscar informações sobre artistas e álbuns. A aplicação é dividida em três abas principais:</p>
+<p align="center">O AudioVibe é uma aplicação que consome a API do Spotify para buscar informações sobre artistas e álbuns. A aplicação é dividida em três abas principais:</p>
+
+<p align="center">
+  <a href="https://horizon-audio-vibe.vercel.app/">
+    Veja o projeto ao vivo
+  </a>
+<p>
+
+<p align="center">
+  <a href="#Início">Inicio</a> •
+  <a href="#API-do-Spotify">Api Spotify</a> •
+  <a href="#Tecnologias-Utilizadas">Tecnologias Utilizadas</a> •
+  <a href="#Como-usar">Como usar</a> •
+  <a href="#Conclusão">Conclusão</a>
+</p>
 
 ## Início
 ![inicio](https://user-images.githubusercontent.com/98111351/229324211-db23cd63-12f8-4beb-acdb-263eb3fa4311.png)
@@ -73,3 +87,8 @@ yarn start
 O AudioVibe é um projeto desenvolvido em React com TypeScript que consome a API do Spotify para buscar informações sobre artistas e álbuns. A aplicação utiliza Reducer para gerenciamento de estado e Axios para realizar as requisições HTTP. Com uma interface intuitiva e fácil de usar, o AudioVibe é uma ótima opção para quem deseja explorar o catálogo de músicas do Spotify de forma mais dinâmica e interativa.
 </p>
 
+
+##Redes Sociais
+
+- Linkedin - [https://www.linkedin.com/in/matheus-mangueira-504130230/](https://www.linkedin.com/in/matheus-mangueira-504130230/)
+- Email - matheusmangueira16@gmail.com
